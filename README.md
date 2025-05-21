@@ -1,6 +1,11 @@
 # koReader-highlight-menu-patch
 Patch to make simple changes to the koReader highlighting menu
 
+## How to use
+Copy the **2-highlight-menu-modifications.lua** file into Patches.
+
+Follow the instructions [here](https://koreader.rocks/user_guide/#L2-userpatches) on how to install patches.
+
 ## Purpose
 Initially this was for me to be able to easily underline text as well as lighten, without having to go through a million menus. Then I also added in functionality that saves the full chapter path in the highlight. 
 - I.e. instead of just "Chapter 1", it would save "Section 1 ▸ Part 1 ▸ Chapter 1", for as many depths as available.
@@ -10,8 +15,6 @@ This can also be used to simply remove menu buttons that are unwanted, to re-ord
 ## Editing
 
 Use a text editor like Notepad++ to view programming structures, or the basic notepad if you don't have it.
-
-Follow the instructions [here](https://koreader.rocks/user_guide/#L2-userpatches) on how to install patches.
 
 &nbsp;
 
