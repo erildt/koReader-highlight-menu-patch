@@ -20,6 +20,7 @@ function ReaderHighlight:init()
     self._highlight_buttons = {
         -- highlight and add_note are for the document itself,
         -- so we put them first.
+			--- start of button
         ["01_select"] = function(this) 			-- ["name for button"]=buttons get selected based on numerical order. If you change one, renumber all buttons
             return {
                 text = _("Select"),				-- the text that will show on the button
@@ -30,6 +31,8 @@ function ReaderHighlight:init()
                 end,
             }
         end,
+			--- end of button
+		
         ["02_highlight"] = function(this)
             return {
                 text = _("Highlight"),
