@@ -7,8 +7,6 @@ local Event = require("ui/event")
 local Notification = require("ui/widget/notification")
 local logger = require("logger")
 local Device = require("device")
-local Blitbuffer = require("ffi/blitbuffer")
-local Screen = Device.screen
 
 -- Store the original function to call it later if needed
 local orig_init = ReaderHighlight.init
