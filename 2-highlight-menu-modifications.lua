@@ -34,7 +34,7 @@ function ReaderHighlight:init()
 		
         ["02_highlight"] = function(this)
             return {
-                text = _("🍊"),
+                icon = _("icon_name"), --- put icon in resources/icons/mdlight and add icon path to ota/package.index
                 enabled = this.hold_pos ~= nil,
                 callback = function()
                     this:saveHighlightFormatted(true,"lighten","orange")
@@ -54,7 +54,7 @@ function ReaderHighlight:init()
         end,
         ["04_highlight"] = function(this)
             return {
-                text = _("🍀"),
+                icon = _("icon_name"), 
                 enabled = this.hold_pos ~= nil,
                 callback = function()
                     this:saveHighlightFormatted(true,"lighten","green")
