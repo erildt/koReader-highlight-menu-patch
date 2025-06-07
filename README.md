@@ -61,7 +61,7 @@ icon = "grape",
 ```
 
 *example2*
-![image](https://github.com/erildt/koReader-highlight-menu-patch/blob/f2ff1522aa15465baffdc297f05fb82db3f87577/example2.jpg)
+![image](https://github.com/erildt/koReader-highlight-menu-patch/blob/10f9c2e73a564f472de96530999b994735ca44d9/20250607_140339.jpg)
 
 *example3*
 ![image](https://github.com/erildt/koReader-highlight-menu-patch/blob/6a637d68d345bd29c0e580b51bec3290eda7b413/20250607_124456.jpg)
