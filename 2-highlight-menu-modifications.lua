@@ -7,6 +7,8 @@ local Event = require("ui/event")
 local Notification = require("ui/widget/notification")
 local logger = require("logger")
 local Device = require("device")
+local Blitbuffer = require("ffi/blitbuffer")
+local Screen = Device.screen
 
 -- Store the original function to call it later if needed
 local orig_init = ReaderHighlight.init
@@ -16,17 +18,16 @@ function ReaderHighlight:init()
     
     --- rearrange these as you like
 	-- "item" structure like explained in "01_select"
-	
     self._highlight_buttons = {
         -- highlight and add_note are for the document itself,
         -- so we put them first.
 			--- start of button
-        ["01_select"] = function(this) 			-- ["name for button"]=buttons get selected based on numerical order. If you change one, renumber all buttons
+        ["01_highlight"] = function(this) 			-- ["name for button"]=buttons get selected based on numerical order. If you change one, renumber all buttons
             return {
-                text = _("Select"),				-- the text that will show on the button
+                text = _("red"), -- the text that will show on the button
                 enabled = this.hold_pos ~= nil,	-- triggers the button (don't change)
                 callback = function()
-                    this:startSelection()		-- the stuff it does
+                    this:saveHighlightFormatted(true,"lighten","red")		-- the stuff it does
                     this:onClose()
                 end,
             }
@@ -35,98 +36,74 @@ function ReaderHighlight:init()
 		
         ["02_highlight"] = function(this)
             return {
-                text = _("Highlight"),
+                text = _("🍊"),
                 enabled = this.hold_pos ~= nil,
                 callback = function()
-                    this:saveHighlightFormatted(true,"lighten",self.view.highlight.saved_color) --- comment this out to use original function
-					-- this:saveHighlight(true) -- uncomment this to use original function
+                    this:saveHighlightFormatted(true,"lighten","orange")
                     this:onClose()
                 end,
             }
         end,
-		["03_underline"] = function(this)
+		["03_highlight"] = function(this)
             return {
-                text = _("Underline"),
+                text = _("🍌"),
                 enabled = this.hold_pos ~= nil,
                 callback = function()
-                    this:saveHighlightFormatted(true,"underscore",self.view.highlight.saved_color)
+                    this:saveHighlightFormatted(true,"lighten","yellow")
                     this:onClose()
                 end,
             }
         end,
-        ["04_copy"] = function(this)
+        ["04_highlight"] = function(this)
             return {
-                text = C_("Text", "Copy"),
-                enabled = Device:hasClipboard(),
-                callback = function()
-                    Device.input.setClipboardText(util.cleanupSelectedText(this.selected_text.text))
-                    this:onClose()
-                    UIManager:show(Notification:new{
-                        text = _("Selection copied to clipboard."),
-                    })
-                end,
-            }
-        end,
-        ["05_add_note"] = function(this)
-            return {
-                text = _("Add note"),
+                text = _("🍀"),
                 enabled = this.hold_pos ~= nil,
                 callback = function()
-                    this:addNote()
+                    this:saveHighlightFormatted(true,"lighten","green")
                     this:onClose()
                 end,
             }
         end,
-		
-		--- original "Wikipedia" button (uncomment from {["05_wikipedia"] = function(this)} to restore
-		-- then information lookup functions, putting on the left those that
-        -- depend on an internet connection.
-        --["05_wikipedia"] = function(this)
-        --    return {
-        --        text = _("Wikipedia"),
-        --        callback = function()
-        --            UIManager:scheduleIn(0.1, function()
-        --                this:lookupWikipedia()
-        --                -- We don't call this:onClose(), we need the highlight
-        --                -- to still be there, as we may Highlight it from the
-        --                -- dict lookup widget.
-        --            end)
-        --        end,
-        --    }
-        --end,
-		
-        ["06_dictionary"] = function(this, index)
+        ["05_highlight"] = function(this)
             return {
-                text = _("Dictionary"),
+                text = _("🫒"),
+                enabled = this.hold_pos ~= nil,
                 callback = function()
-                    this:lookupDict(index)
-                    -- We don't call this:onClose(), same reason as above
+                    this:saveHighlightFormatted(true,"lighten","olive")
+                    this:onClose()
                 end,
             }
         end,
-        ["07_translate"] = function(this, index)
+	
+        ["06_highlight"] = function(this)
             return {
-                text = _("Translate"),
+                text = _("cyan"),
+                enabled = this.hold_pos ~= nil,
                 callback = function()
-                    this:translate(index)
-                    -- We don't call this:onClose(), so one can still see
-                    -- the highlighted text when moving the translated
-                    -- text window, and also if NetworkMgr:promptWifiOn()
-                    -- is needed, so the user can just tap again on this
-                    -- button and does not need to select the text again.
+                    this:saveHighlightFormatted(true,"lighten","cyan")
+                    this:onClose()
                 end,
             }
         end,
-        -- buttons 08-11 are conditional ones, so the number of buttons can be even or odd
-        -- let the Search button be the last, occasionally narrow or wide, less confusing
-        ["12_search"] = function(this)
+        
+        ["07_highlight"] = function(this)
             return {
-                text = _("Search"),
+                text = _("blue"),
+                enabled = this.hold_pos ~= nil,
                 callback = function()
-                    this:onHighlightSearch()
-                    -- We don't call this:onClose(), crengine will highlight
-                    -- search matches on the current page, and self:clear()
-                    -- would redraw and remove crengine native highlights
+                    this:saveHighlightFormatted(true,"lighten","blue")
+                    this:onClose()
+                end,
+            }
+        end,
+        -- 
+        ["8_highlight"] = function(this)
+            return {
+                text = _("🍇"),
+                enabled = this.hold_pos ~= nil,      
+                callback = function()
+                    this:saveHighlightFormatted(true,"lighten","purple")
+                    this:onClose()
                 end,
             }
         end,
