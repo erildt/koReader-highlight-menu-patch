@@ -49,9 +49,10 @@ To use images instead of texts, put your images in
 ```
 resources/icons/mdlight
 ```
-and add image file path to
+and add image file path to 
 ```
-(ex: koreader/resources/icons/mdlight/grape.png)
+koreader/ota/package.index
+ex: koreader/resources/icons/mdlight/grape.png
 ```
 
 - in the user patch, instead of 
@@ -65,5 +66,5 @@ put
 icon = "grape",
 ```
 
-**example2**
+*example2*
 
