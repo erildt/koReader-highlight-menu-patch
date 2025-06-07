@@ -34,3 +34,13 @@ My custom highlighting function starts on line 139
 > - To only use the original highlighting function, comment out line 41 and uncomment line 42 in the block ["02_highlight"]
 > - You can also remove my custom button ["03_underline"]
 > - You can delete the saveHighlightFormatted function but you don't need to
+
+## Using it as highlight menu
+
+You can increase column numbers in readerhighlight.lua to make it horizontal.
+
+*koreader/frontend/apps/reader/modules/readerhighlight.lua, line 1511*
+> - local columns = 2
+
+*example*
+![image](https://github.com/user-attachments/assets/5103aba1-0bf4-4bea-9b08-339adafe4700)
