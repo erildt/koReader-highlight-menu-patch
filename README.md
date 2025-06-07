@@ -54,7 +54,7 @@ and add image file path in koreader/ota/package.index
 ex: koreader/resources/icons/mdlight/grape.png
 ```
 
-- in the user patch, instead of 
+in the user patch, instead of 
 
 ```
 text = "purple",
