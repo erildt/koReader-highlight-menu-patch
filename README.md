@@ -35,7 +35,7 @@ My custom highlighting function starts on line 139
 > - You can also remove my custom button ["03_underline"]
 > - You can delete the saveHighlightFormatted function but you don't need to
 
-## Using it as highlight menu
+## Using it as highlight colors menu
 
 You can increase column numbers in readerhighlight.lua to make it horizontal.
 
