@@ -37,7 +37,7 @@ My custom highlighting function starts on line 139
 
 ## Using it as highlight colors menu
 
-You can increase column numbers in readerhighlight.lua to make it horizontal.
+You can increase column number in readerhighlight.lua to make it horizontal.
 
 *koreader/frontend/apps/reader/modules/readerhighlight.lua, line 1511*
 > - local columns = 2
