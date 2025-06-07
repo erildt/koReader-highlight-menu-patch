@@ -44,3 +44,26 @@ You can increase column numbers in readerhighlight.lua to make it horizontal.
 
 *example*
 ![image](https://github.com/user-attachments/assets/5103aba1-0bf4-4bea-9b08-339adafe4700)
+
+To use images instead of texts, put your images in 
+```
+resources/icons/mdlight
+```
+and add image file path to
+```
+(ex: koreader/resources/icons/mdlight/grape.png)
+```
+
+- in the user patch, instead of 
+
+```
+text = "purple",
+```
+put 
+
+```
+icon = "grape",
+```
+
+**example2**
+
