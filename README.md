@@ -49,7 +49,7 @@ To use images instead of texts, put your images in
 ```
 resources/icons/mdlight
 ```
-in the user patch, instead of 
+In the user patch, instead of 
 
 ```
 text = "purple",
