@@ -66,5 +66,6 @@ icon = "grape",
 *example3*
 ![image](https://github.com/erildt/koReader-highlight-menu-patch/blob/6a637d68d345bd29c0e580b51bec3290eda7b413/20250607_124456.jpg)
 
-- different actions for press and long-press
+- Two actions for one button(press and long-press)
+
 You can also assign two actions to one button using callback(press) and hold_callback(long_press).
