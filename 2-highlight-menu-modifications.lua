@@ -28,6 +28,10 @@ function ReaderHighlight:init()
                     this:saveHighlightFormatted(true,"lighten","red")		-- the stuff it does
                     this:onClose()
                 end,
+				hold_callback = function()
+                    this:saveHighlightFormatted(true,"underscore","red")		-- long-press to underline
+                    this:onClose()
+                end,
             }
         end,
 			--- end of button
@@ -40,6 +44,10 @@ function ReaderHighlight:init()
                     this:saveHighlightFormatted(true,"lighten","orange")
                     this:onClose()
                 end,
+			    hold_callback = function()
+                    this:saveHighlightFormatted(true,"underscore","orange")		
+                    this:onClose()
+                end,
             }
         end,
 		["03_highlight"] = function(this)
@@ -48,6 +56,10 @@ function ReaderHighlight:init()
                 enabled = this.hold_pos ~= nil,
                 callback = function()
                     this:saveHighlightFormatted(true,"lighten","yellow")
+                    this:onClose()
+                end,
+				hold_callback = function()
+                    this:saveHighlightFormatted(true,"underscore","yellow")		
                     this:onClose()
                 end,
             }
@@ -102,6 +114,18 @@ function ReaderHighlight:init()
                 callback = function()
                     this:saveHighlightFormatted(true,"lighten","purple")
                     this:onClose()
+                end,
+            }
+        end,
+		["09_dictionary"] = function(this, index)
+            return {
+                icon = "dictionary",
+                callback = function()
+                    this:lookupDict(index)
+                    -- We don't call this:onClose(), same reason as above
+                end,
+		hold_callback = function()
+                    this:onHighlightSearch() -- search highlighted text from the book
                 end,
             }
         end,
