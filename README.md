@@ -69,3 +69,20 @@ icon = "grape",
 - Two actions for one button(press and long-press)
 
 You can also assign two actions to one button using callback(press) and hold_callback(long_press).
+```
+["02_highlight"] = function(this)
+            return {
+                icon = _("orange"), 
+                enabled = this.hold_pos ~= nil,
+                callback = function()
+                    this:saveHighlightFormatted(true,"lighten","orange") --highlight
+                    this:onClose()
+                end,
+			    hold_callback = function()
+                    this:saveHighlightFormatted(true,"underscore","orange")	--underline	
+                    this:onClose()
+                end,
+            }
+        end,
+```
+For example, pressing this button highlights text in orange, and long pressing underlines in orange.
